@@ -69,12 +69,12 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--image', type=str, required=True, help='input image for generating caption')
-    parser.add_argument('--encoder_path', type=str, default='models/encoder-best.ckpt', help='path for trained encoder')
-    parser.add_argument('--decoder_path', type=str, default='models/decoder-best.ckpt', help='path for trained decoder')
+    parser.add_argument('--encoder_path', type=str, default='models/prelstm/encoder-best.ckpt', help='path for trained encoder')
+    parser.add_argument('--decoder_path', type=str, default='models/prelstm/decoder-best.ckpt', help='path for trained decoder')
     parser.add_argument('--vocab_path', type=str, default='data/vocab.pkl', help='path for vocabulary wrapper')
     
     # Model parameters (should be same as paramters in train.py)
-    parser.add_argument('--embed_size', type=int , default=256, help='dimension of word embedding vectors')
+    parser.add_argument('--embed_size', type=int , default=300, help='dimension of word embedding vectors')
     parser.add_argument('--hidden_size', type=int , default=512, help='dimension of lstm hidden states')
     parser.add_argument('--num_layers', type=int , default=1, help='number of layers in lstm')
     args = parser.parse_args()

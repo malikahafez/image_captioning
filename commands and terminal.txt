@@ -1,0 +1,1173 @@
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2025 NVIDIA Corporation
+Built on Tue_Dec_16_19:27:18_Pacific_Standard_Time_2025
+Cuda compilation tools, release 13.1, V13.1.115
+Build cuda_13.1.r13.1/compiler.37061995_0
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>pip install torch torchvision --index-url https://download.pytorch.org/whl/cu130
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>pip install numpy pandas matplotlib pillow nltk pycocotools gensim scikit-learn
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python -c "import torch; print('PyTorch Version:', torch.__version__); print('CUDA Available:', torch.cuda.is_available()); print('CUDA Version:', torch.version.cuda)"
+PyTorch Version: 2.14.1+cu130
+CUDA Available: True
+CUDA Version: 13.0
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>conda install ipykernel  
+3 channel Terms of Service accepted
+Channels:
+ - defaults
+Platform: win-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python build_vocab.py                           
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+loading annotations into memory...
+Done (t=0.36s)
+creating index...
+index created!
+[10000/414113] Tokenized the captions.
+[20000/414113] Tokenized the captions.
+[30000/414113] Tokenized the captions.
+[40000/414113] Tokenized the captions.
+[50000/414113] Tokenized the captions.
+[60000/414113] Tokenized the captions.
+[70000/414113] Tokenized the captions.
+[80000/414113] Tokenized the captions.
+[90000/414113] Tokenized the captions.
+[100000/414113] Tokenized the captions.
+[110000/414113] Tokenized the captions.
+[120000/414113] Tokenized the captions.
+[130000/414113] Tokenized the captions.
+[140000/414113] Tokenized the captions.
+[150000/414113] Tokenized the captions.
+[160000/414113] Tokenized the captions.
+[170000/414113] Tokenized the captions.
+[180000/414113] Tokenized the captions.
+[190000/414113] Tokenized the captions.
+[200000/414113] Tokenized the captions.
+[210000/414113] Tokenized the captions.
+[220000/414113] Tokenized the captions.
+[230000/414113] Tokenized the captions.
+[240000/414113] Tokenized the captions.
+[250000/414113] Tokenized the captions.
+[260000/414113] Tokenized the captions.
+[270000/414113] Tokenized the captions.
+[280000/414113] Tokenized the captions.
+[290000/414113] Tokenized the captions.
+[300000/414113] Tokenized the captions.
+[310000/414113] Tokenized the captions.
+[320000/414113] Tokenized the captions.
+[330000/414113] Tokenized the captions.
+[340000/414113] Tokenized the captions.
+[350000/414113] Tokenized the captions.
+[360000/414113] Tokenized the captions.
+[370000/414113] Tokenized the captions.
+[380000/414113] Tokenized the captions.
+[390000/414113] Tokenized the captions.
+[400000/414113] Tokenized the captions.
+[410000/414113] Tokenized the captions.
+Total vocabulary size: 9950
+Saved the vocabulary wrapper to './data/vocab.pkl'
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python train_val_split.py
+loading annotations into memory...
+Done (t=0.35s)
+creating index...
+index created!
+Moving validation images...
+Moving training images...
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python train.py --model_name prelstm
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Namespace(model_name='prelstm', model_path='models/', crop_size=224, vocab_path='data/vocab.pkl', image_dir='data/images/train', caption_path='data/annotations/captions_train2014.json', log_step=10, save_step=1, val_image_dir='data/images/val', val_caption_path='data/annotations/captions_val2014.json', embed_size=300, hidden_size=512, num_layers=1, num_epochs=30, batch_size_train=128, batch_size_val=64, num_workers=2, learning_rate=0.001, pretrained=False)
+loading annotations into memory...
+Done (t=0.35s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.37s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.31s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.37s)
+creating index...
+index created!
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Downloading: "https://download.pytorch.org/models/resnet50-0676ba61.pth" to C:\Users\malik/.cache\torch\hub\checkpoints\resnet50-0676ba61.pth
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 97.8M/97.8M [00:09<00:00, 11.0MB/s]
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [0/30], Step [0/518], Loss: 9.2214, Perplexity: 10111.4635
+Epoch [0/30], Step [10/518], Loss: 5.8093, Perplexity: 333.3944
+Epoch [0/30], Step [20/518], Loss: 5.1862, Perplexity: 178.7889
+Epoch [0/30], Step [30/518], Loss: 4.7714, Perplexity: 118.0887
+Epoch [0/30], Step [40/518], Loss: 4.4195, Perplexity: 83.0565
+Epoch [0/30], Step [50/518], Loss: 4.2284, Perplexity: 68.6053
+Epoch [0/30], Step [60/518], Loss: 4.0510, Perplexity: 57.4522
+Epoch [0/30], Step [70/518], Loss: 4.0753, Perplexity: 58.8690
+Epoch [0/30], Step [80/518], Loss: 3.8899, Perplexity: 48.9080
+Epoch [0/30], Step [90/518], Loss: 3.8639, Perplexity: 47.6507
+Epoch [0/30], Step [100/518], Loss: 3.6995, Perplexity: 40.4252
+Epoch [0/30], Step [110/518], Loss: 3.7503, Perplexity: 42.5356
+Epoch [0/30], Step [120/518], Loss: 3.6055, Perplexity: 36.7997
+Epoch [0/30], Step [130/518], Loss: 3.5289, Perplexity: 34.0848
+Epoch [0/30], Step [140/518], Loss: 3.5803, Perplexity: 35.8849
+Epoch [0/30], Step [150/518], Loss: 3.6201, Perplexity: 37.3402
+Epoch [0/30], Step [160/518], Loss: 3.5829, Perplexity: 35.9760
+Epoch [0/30], Step [170/518], Loss: 3.4204, Perplexity: 30.5826
+Epoch [0/30], Step [180/518], Loss: 3.3811, Perplexity: 29.4043
+Epoch [0/30], Step [190/518], Loss: 3.2958, Perplexity: 26.9997
+Epoch [0/30], Step [200/518], Loss: 3.2137, Perplexity: 24.8703
+Epoch [0/30], Step [210/518], Loss: 3.1682, Perplexity: 23.7657
+Epoch [0/30], Step [220/518], Loss: 3.3424, Perplexity: 28.2863
+Epoch [0/30], Step [230/518], Loss: 3.2370, Perplexity: 25.4568
+Epoch [0/30], Step [240/518], Loss: 3.1712, Perplexity: 23.8351
+Epoch [0/30], Step [250/518], Loss: 3.1800, Perplexity: 24.0479
+Epoch [0/30], Step [260/518], Loss: 3.1764, Perplexity: 23.9612
+Epoch [0/30], Step [270/518], Loss: 3.0964, Perplexity: 22.1178
+Epoch [0/30], Step [280/518], Loss: 3.0625, Perplexity: 21.3804
+Epoch [0/30], Step [290/518], Loss: 3.3348, Perplexity: 28.0724
+Epoch [0/30], Step [300/518], Loss: 3.2083, Perplexity: 24.7363
+Epoch [0/30], Step [310/518], Loss: 3.1670, Perplexity: 23.7358
+Epoch [0/30], Step [320/518], Loss: 3.0136, Perplexity: 20.3606
+Epoch [0/30], Step [330/518], Loss: 3.0021, Perplexity: 20.1284
+Epoch [0/30], Step [340/518], Loss: 3.2695, Perplexity: 26.2990
+Epoch [0/30], Step [350/518], Loss: 3.0752, Perplexity: 21.6539
+Epoch [0/30], Step [360/518], Loss: 3.1210, Perplexity: 22.6680
+Epoch [0/30], Step [370/518], Loss: 2.9079, Perplexity: 18.3183
+Epoch [0/30], Step [380/518], Loss: 2.9448, Perplexity: 19.0078
+Epoch [0/30], Step [390/518], Loss: 3.0968, Perplexity: 22.1273
+Epoch [0/30], Step [400/518], Loss: 3.0342, Perplexity: 20.7853
+Epoch [0/30], Step [410/518], Loss: 3.0191, Perplexity: 20.4734
+Epoch [0/30], Step [420/518], Loss: 2.9561, Perplexity: 19.2234
+Epoch [0/30], Step [430/518], Loss: 2.9517, Perplexity: 19.1375
+Epoch [0/30], Step [440/518], Loss: 2.9464, Perplexity: 19.0369
+Epoch [0/30], Step [450/518], Loss: 3.0171, Perplexity: 20.4313
+Epoch [0/30], Step [460/518], Loss: 2.8677, Perplexity: 17.5962
+Epoch [0/30], Step [470/518], Loss: 3.0155, Perplexity: 20.3998
+Epoch [0/30], Step [480/518], Loss: 2.7318, Perplexity: 15.3608
+Epoch [0/30], Step [490/518], Loss: 2.9163, Perplexity: 18.4722
+Epoch [0/30], Step [500/518], Loss: 2.8821, Perplexity: 17.8521
+Epoch [0/30], Step [510/518], Loss: 2.8721, Perplexity: 17.6735
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [1/30], Step [0/518], Loss: 2.7321, Perplexity: 15.3658
+Epoch [1/30], Step [10/518], Loss: 2.6722, Perplexity: 14.4712
+Epoch [1/30], Step [20/518], Loss: 2.8549, Perplexity: 17.3725
+Epoch [1/30], Step [30/518], Loss: 2.6776, Perplexity: 14.5497
+Epoch [1/30], Step [40/518], Loss: 2.6142, Perplexity: 13.6564
+Epoch [1/30], Step [50/518], Loss: 2.6619, Perplexity: 14.3234
+Epoch [1/30], Step [60/518], Loss: 2.7080, Perplexity: 14.9994
+Epoch [1/30], Step [70/518], Loss: 2.8544, Perplexity: 17.3645
+Epoch [1/30], Step [80/518], Loss: 2.5633, Perplexity: 12.9790
+Epoch [1/30], Step [90/518], Loss: 2.9456, Perplexity: 19.0217
+Epoch [1/30], Step [100/518], Loss: 2.7038, Perplexity: 14.9371
+Epoch [1/30], Step [110/518], Loss: 2.6082, Perplexity: 13.5746
+Epoch [1/30], Step [120/518], Loss: 2.5946, Perplexity: 13.3918
+Epoch [1/30], Step [130/518], Loss: 2.6991, Perplexity: 14.8669
+Epoch [1/30], Step [140/518], Loss: 2.5897, Perplexity: 13.3252
+Epoch [1/30], Step [150/518], Loss: 2.5336, Perplexity: 12.5985
+Epoch [1/30], Step [160/518], Loss: 2.8162, Perplexity: 16.7125
+Epoch [1/30], Step [170/518], Loss: 2.5425, Perplexity: 12.7110
+Epoch [1/30], Step [180/518], Loss: 2.6088, Perplexity: 13.5829
+Epoch [1/30], Step [190/518], Loss: 2.6124, Perplexity: 13.6323
+Epoch [1/30], Step [200/518], Loss: 2.7197, Perplexity: 15.1764
+Epoch [1/30], Step [210/518], Loss: 2.8416, Perplexity: 17.1432
+Epoch [1/30], Step [220/518], Loss: 2.5972, Perplexity: 13.4262
+Epoch [1/30], Step [230/518], Loss: 2.7315, Perplexity: 15.3562
+Epoch [1/30], Step [240/518], Loss: 2.6408, Perplexity: 14.0237
+Epoch [1/30], Step [250/518], Loss: 2.7684, Perplexity: 15.9332
+Epoch [1/30], Step [260/518], Loss: 2.6390, Perplexity: 13.9995
+Epoch [1/30], Step [270/518], Loss: 2.5549, Perplexity: 12.8699
+Epoch [1/30], Step [280/518], Loss: 2.5832, Perplexity: 13.2398
+Epoch [1/30], Step [290/518], Loss: 2.6236, Perplexity: 13.7854
+Epoch [1/30], Step [300/518], Loss: 2.6872, Perplexity: 14.6911
+Epoch [1/30], Step [310/518], Loss: 2.6153, Perplexity: 13.6708
+Epoch [1/30], Step [320/518], Loss: 2.5617, Perplexity: 12.9584
+Epoch [1/30], Step [330/518], Loss: 2.6020, Perplexity: 13.4913
+Epoch [1/30], Step [340/518], Loss: 2.5539, Perplexity: 12.8569
+Epoch [1/30], Step [350/518], Loss: 2.6803, Perplexity: 14.5888
+Epoch [1/30], Step [360/518], Loss: 2.5153, Perplexity: 12.3705
+Epoch [1/30], Step [370/518], Loss: 2.4161, Perplexity: 11.2018
+Epoch [1/30], Step [380/518], Loss: 2.5537, Perplexity: 12.8543
+Epoch [1/30], Step [390/518], Loss: 2.6877, Perplexity: 14.6982
+Epoch [1/30], Step [400/518], Loss: 2.4044, Perplexity: 11.0719
+Epoch [1/30], Step [410/518], Loss: 2.5555, Perplexity: 12.8778
+Epoch [1/30], Step [420/518], Loss: 2.5636, Perplexity: 12.9823
+Epoch [1/30], Step [430/518], Loss: 2.5622, Perplexity: 12.9638
+Epoch [1/30], Step [440/518], Loss: 2.6371, Perplexity: 13.9733
+Epoch [1/30], Step [450/518], Loss: 2.5203, Perplexity: 12.4328
+Epoch [1/30], Step [460/518], Loss: 2.6441, Perplexity: 14.0704
+Epoch [1/30], Step [470/518], Loss: 2.3506, Perplexity: 10.4918
+Epoch [1/30], Step [480/518], Loss: 2.4716, Perplexity: 11.8418
+Epoch [1/30], Step [490/518], Loss: 2.4869, Perplexity: 12.0242
+Epoch [1/30], Step [500/518], Loss: 2.5106, Perplexity: 12.3126
+Epoch [1/30], Step [510/518], Loss: 2.3550, Perplexity: 10.5377
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [2/30], Step [0/518], Loss: 2.4011, Perplexity: 11.0356
+Epoch [2/30], Step [10/518], Loss: 2.3250, Perplexity: 10.2267
+Epoch [2/30], Step [20/518], Loss: 2.4305, Perplexity: 11.3642
+Epoch [2/30], Step [30/518], Loss: 2.3707, Perplexity: 10.7054
+Epoch [2/30], Step [40/518], Loss: 2.2088, Perplexity: 9.1047
+Epoch [2/30], Step [50/518], Loss: 2.4682, Perplexity: 11.8017
+Epoch [2/30], Step [60/518], Loss: 2.3428, Perplexity: 10.4103
+Epoch [2/30], Step [70/518], Loss: 2.4123, Perplexity: 11.1592
+Epoch [2/30], Step [80/518], Loss: 2.3339, Perplexity: 10.3176
+Epoch [2/30], Step [90/518], Loss: 2.4358, Perplexity: 11.4252
+Epoch [2/30], Step [100/518], Loss: 2.3707, Perplexity: 10.7051
+Epoch [2/30], Step [110/518], Loss: 2.5401, Perplexity: 12.6808
+Epoch [2/30], Step [120/518], Loss: 2.2437, Perplexity: 9.4283
+Epoch [2/30], Step [130/518], Loss: 2.3030, Perplexity: 10.0046
+Epoch [2/30], Step [140/518], Loss: 2.3059, Perplexity: 10.0333
+Epoch [2/30], Step [150/518], Loss: 2.3505, Perplexity: 10.4912
+Epoch [2/30], Step [160/518], Loss: 2.3651, Perplexity: 10.6456
+Epoch [2/30], Step [170/518], Loss: 2.4206, Perplexity: 11.2529
+Epoch [2/30], Step [180/518], Loss: 2.3039, Perplexity: 10.0129
+Epoch [2/30], Step [190/518], Loss: 2.3306, Perplexity: 10.2839
+Epoch [2/30], Step [200/518], Loss: 2.2374, Perplexity: 9.3693
+Epoch [2/30], Step [210/518], Loss: 2.4055, Perplexity: 11.0844
+Epoch [2/30], Step [220/518], Loss: 2.2907, Perplexity: 9.8816
+Epoch [2/30], Step [230/518], Loss: 2.4875, Perplexity: 12.0307
+Epoch [2/30], Step [240/518], Loss: 2.4089, Perplexity: 11.1213
+Epoch [2/30], Step [250/518], Loss: 2.4429, Perplexity: 11.5069
+Epoch [2/30], Step [260/518], Loss: 2.3154, Perplexity: 10.1294
+Epoch [2/30], Step [270/518], Loss: 2.4064, Perplexity: 11.0939
+Epoch [2/30], Step [280/518], Loss: 2.5135, Perplexity: 12.3479
+Epoch [2/30], Step [290/518], Loss: 2.3994, Perplexity: 11.0171
+Epoch [2/30], Step [300/518], Loss: 2.2439, Perplexity: 9.4298
+Epoch [2/30], Step [310/518], Loss: 2.4618, Perplexity: 11.7264
+Epoch [2/30], Step [320/518], Loss: 2.2913, Perplexity: 9.8878
+Epoch [2/30], Step [330/518], Loss: 2.4097, Perplexity: 11.1307
+Epoch [2/30], Step [340/518], Loss: 2.3720, Perplexity: 10.7190
+Epoch [2/30], Step [350/518], Loss: 2.2756, Perplexity: 9.7336
+Epoch [2/30], Step [360/518], Loss: 2.3390, Perplexity: 10.3705
+Epoch [2/30], Step [370/518], Loss: 2.3407, Perplexity: 10.3883
+Epoch [2/30], Step [380/518], Loss: 2.1564, Perplexity: 8.6397
+Epoch [2/30], Step [390/518], Loss: 2.3095, Perplexity: 10.0696
+Epoch [2/30], Step [400/518], Loss: 2.4870, Perplexity: 12.0253
+Epoch [2/30], Step [410/518], Loss: 2.0493, Perplexity: 7.7622
+Epoch [2/30], Step [420/518], Loss: 2.2178, Perplexity: 9.1874
+Epoch [2/30], Step [430/518], Loss: 2.3145, Perplexity: 10.1200
+Epoch [2/30], Step [440/518], Loss: 2.3269, Perplexity: 10.2459
+Epoch [2/30], Step [450/518], Loss: 2.4424, Perplexity: 11.5006
+Epoch [2/30], Step [460/518], Loss: 2.4716, Perplexity: 11.8411
+Epoch [2/30], Step [470/518], Loss: 2.2951, Perplexity: 9.9253
+Epoch [2/30], Step [480/518], Loss: 2.2653, Perplexity: 9.6345
+Epoch [2/30], Step [490/518], Loss: 2.3153, Perplexity: 10.1281
+Epoch [2/30], Step [500/518], Loss: 2.2590, Perplexity: 9.5736
+Epoch [2/30], Step [510/518], Loss: 2.4178, Perplexity: 11.2208
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [3/30], Step [0/518], Loss: 2.1224, Perplexity: 8.3508
+Epoch [3/30], Step [10/518], Loss: 2.1786, Perplexity: 8.8336
+Epoch [3/30], Step [20/518], Loss: 2.0458, Perplexity: 7.7357
+Epoch [3/30], Step [30/518], Loss: 2.1991, Perplexity: 9.0170
+Epoch [3/30], Step [40/518], Loss: 2.2148, Perplexity: 9.1595
+Epoch [3/30], Step [50/518], Loss: 2.3455, Perplexity: 10.4380
+Epoch [3/30], Step [60/518], Loss: 2.1749, Perplexity: 8.8012
+Epoch [3/30], Step [70/518], Loss: 2.2711, Perplexity: 9.6897
+Epoch [3/30], Step [80/518], Loss: 2.2034, Perplexity: 9.0559
+Epoch [3/30], Step [90/518], Loss: 2.1192, Perplexity: 8.3242
+Epoch [3/30], Step [100/518], Loss: 2.2266, Perplexity: 9.2679
+Epoch [3/30], Step [110/518], Loss: 2.1988, Perplexity: 9.0138
+Epoch [3/30], Step [120/518], Loss: 2.1726, Perplexity: 8.7809
+Epoch [3/30], Step [130/518], Loss: 2.0079, Perplexity: 7.4477
+Epoch [3/30], Step [140/518], Loss: 2.2746, Perplexity: 9.7237
+Epoch [3/30], Step [150/518], Loss: 2.1859, Perplexity: 8.8984
+Epoch [3/30], Step [160/518], Loss: 2.2951, Perplexity: 9.9251
+Epoch [3/30], Step [170/518], Loss: 2.1492, Perplexity: 8.5776
+Epoch [3/30], Step [180/518], Loss: 2.2032, Perplexity: 9.0536
+Epoch [3/30], Step [190/518], Loss: 2.2265, Perplexity: 9.2670
+Epoch [3/30], Step [200/518], Loss: 2.1433, Perplexity: 8.5272
+Epoch [3/30], Step [210/518], Loss: 2.1181, Perplexity: 8.3154
+Epoch [3/30], Step [220/518], Loss: 2.2003, Perplexity: 9.0277
+Epoch [3/30], Step [230/518], Loss: 2.0701, Perplexity: 7.9253
+Epoch [3/30], Step [240/518], Loss: 2.2879, Perplexity: 9.8547
+Epoch [3/30], Step [250/518], Loss: 2.0681, Perplexity: 7.9098
+Epoch [3/30], Step [260/518], Loss: 2.2224, Perplexity: 9.2291
+Epoch [3/30], Step [270/518], Loss: 2.2083, Perplexity: 9.0999
+Epoch [3/30], Step [280/518], Loss: 2.2431, Perplexity: 9.4229
+Epoch [3/30], Step [290/518], Loss: 2.1499, Perplexity: 8.5838
+Epoch [3/30], Step [300/518], Loss: 2.2238, Perplexity: 9.2426
+Epoch [3/30], Step [310/518], Loss: 2.3215, Perplexity: 10.1913
+Epoch [3/30], Step [320/518], Loss: 2.2470, Perplexity: 9.4598
+Epoch [3/30], Step [330/518], Loss: 2.1730, Perplexity: 8.7845
+Epoch [3/30], Step [340/518], Loss: 2.0753, Perplexity: 7.9669
+Epoch [3/30], Step [350/518], Loss: 2.1186, Perplexity: 8.3192
+Epoch [3/30], Step [360/518], Loss: 2.2634, Perplexity: 9.6161
+Epoch [3/30], Step [370/518], Loss: 2.1850, Perplexity: 8.8903
+Epoch [3/30], Step [380/518], Loss: 2.2375, Perplexity: 9.3694
+Epoch [3/30], Step [390/518], Loss: 2.1580, Perplexity: 8.6536
+Epoch [3/30], Step [400/518], Loss: 2.1543, Perplexity: 8.6221
+Epoch [3/30], Step [410/518], Loss: 2.0570, Perplexity: 7.8225
+Epoch [3/30], Step [420/518], Loss: 2.1354, Perplexity: 8.4603
+Epoch [3/30], Step [430/518], Loss: 2.2865, Perplexity: 9.8408
+Epoch [3/30], Step [440/518], Loss: 2.0902, Perplexity: 8.0865
+Epoch [3/30], Step [450/518], Loss: 2.1869, Perplexity: 8.9075
+Epoch [3/30], Step [460/518], Loss: 2.2196, Perplexity: 9.2040
+Epoch [3/30], Step [470/518], Loss: 2.1456, Perplexity: 8.5473
+Epoch [3/30], Step [480/518], Loss: 2.1272, Perplexity: 8.3916
+Epoch [3/30], Step [490/518], Loss: 2.2027, Perplexity: 9.0498
+Epoch [3/30], Step [500/518], Loss: 2.0774, Perplexity: 7.9839
+Epoch [3/30], Step [510/518], Loss: 2.2471, Perplexity: 9.4607
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [4/30], Step [0/518], Loss: 2.0785, Perplexity: 7.9923
+Epoch [4/30], Step [10/518], Loss: 1.9498, Perplexity: 7.0271
+Epoch [4/30], Step [20/518], Loss: 2.0315, Perplexity: 7.6253
+Epoch [4/30], Step [30/518], Loss: 2.0871, Perplexity: 8.0614
+Epoch [4/30], Step [40/518], Loss: 2.0951, Perplexity: 8.1259
+Epoch [4/30], Step [50/518], Loss: 1.9819, Perplexity: 7.2565
+Epoch [4/30], Step [60/518], Loss: 1.9658, Perplexity: 7.1406
+Epoch [4/30], Step [70/518], Loss: 1.9680, Perplexity: 7.1560
+Epoch [4/30], Step [80/518], Loss: 1.9804, Perplexity: 7.2455
+Epoch [4/30], Step [90/518], Loss: 1.9903, Perplexity: 7.3179
+Epoch [4/30], Step [100/518], Loss: 1.9867, Perplexity: 7.2912
+Epoch [4/30], Step [110/518], Loss: 2.0820, Perplexity: 8.0201
+Epoch [4/30], Step [120/518], Loss: 2.0372, Perplexity: 7.6690
+Epoch [4/30], Step [130/518], Loss: 2.0089, Perplexity: 7.4548
+Epoch [4/30], Step [140/518], Loss: 2.1304, Perplexity: 8.4181
+Epoch [4/30], Step [150/518], Loss: 2.0819, Perplexity: 8.0199
+Epoch [4/30], Step [160/518], Loss: 2.0726, Perplexity: 7.9458
+Epoch [4/30], Step [170/518], Loss: 1.9621, Perplexity: 7.1140
+Epoch [4/30], Step [180/518], Loss: 1.9719, Perplexity: 7.1840
+Epoch [4/30], Step [190/518], Loss: 2.0945, Perplexity: 8.1216
+Epoch [4/30], Step [200/518], Loss: 1.9122, Perplexity: 6.7677
+Epoch [4/30], Step [210/518], Loss: 2.0736, Perplexity: 7.9535
+Epoch [4/30], Step [220/518], Loss: 2.1887, Perplexity: 8.9239
+Epoch [4/30], Step [230/518], Loss: 2.0366, Perplexity: 7.6647
+Epoch [4/30], Step [240/518], Loss: 2.0387, Perplexity: 7.6805
+Epoch [4/30], Step [250/518], Loss: 2.0248, Perplexity: 7.5744
+Epoch [4/30], Step [260/518], Loss: 2.0038, Perplexity: 7.4168
+Epoch [4/30], Step [270/518], Loss: 2.1018, Perplexity: 8.1811
+Epoch [4/30], Step [280/518], Loss: 2.1497, Perplexity: 8.5825
+Epoch [4/30], Step [290/518], Loss: 1.9161, Perplexity: 6.7945
+Epoch [4/30], Step [300/518], Loss: 2.0030, Perplexity: 7.4116
+Epoch [4/30], Step [310/518], Loss: 2.1141, Perplexity: 8.2819
+Epoch [4/30], Step [320/518], Loss: 2.1151, Perplexity: 8.2905
+Epoch [4/30], Step [330/518], Loss: 2.0498, Perplexity: 7.7665
+Epoch [4/30], Step [340/518], Loss: 2.0797, Perplexity: 8.0021
+Epoch [4/30], Step [350/518], Loss: 2.0224, Perplexity: 7.5565
+Epoch [4/30], Step [360/518], Loss: 2.0340, Perplexity: 7.6448
+Epoch [4/30], Step [370/518], Loss: 2.1409, Perplexity: 8.5070
+Epoch [4/30], Step [380/518], Loss: 2.0622, Perplexity: 7.8630
+Epoch [4/30], Step [390/518], Loss: 1.9961, Perplexity: 7.3603
+Epoch [4/30], Step [400/518], Loss: 2.0022, Perplexity: 7.4057
+Epoch [4/30], Step [410/518], Loss: 1.9340, Perplexity: 6.9174
+Epoch [4/30], Step [420/518], Loss: 1.9495, Perplexity: 7.0251
+Epoch [4/30], Step [430/518], Loss: 2.0980, Perplexity: 8.1500
+Epoch [4/30], Step [440/518], Loss: 2.0389, Perplexity: 7.6824
+Epoch [4/30], Step [450/518], Loss: 2.0000, Perplexity: 7.3888
+Epoch [4/30], Step [460/518], Loss: 2.0476, Perplexity: 7.7493
+Epoch [4/30], Step [470/518], Loss: 1.9501, Perplexity: 7.0296
+Epoch [4/30], Step [480/518], Loss: 2.1143, Perplexity: 8.2842
+Epoch [4/30], Step [490/518], Loss: 2.0761, Perplexity: 7.9732
+Epoch [4/30], Step [500/518], Loss: 1.9073, Perplexity: 6.7349
+Epoch [4/30], Step [510/518], Loss: 1.9817, Perplexity: 7.2547
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [5/30], Step [0/518], Loss: 1.8496, Perplexity: 6.3570
+Epoch [5/30], Step [10/518], Loss: 1.8213, Perplexity: 6.1798
+Epoch [5/30], Step [20/518], Loss: 1.7986, Perplexity: 6.0412
+Epoch [5/30], Step [30/518], Loss: 1.8038, Perplexity: 6.0729
+Epoch [5/30], Step [40/518], Loss: 1.9295, Perplexity: 6.8862
+Epoch [5/30], Step [50/518], Loss: 1.8065, Perplexity: 6.0893
+Epoch [5/30], Step [60/518], Loss: 1.9269, Perplexity: 6.8681
+Epoch [5/30], Step [70/518], Loss: 1.9689, Perplexity: 7.1626
+Epoch [5/30], Step [80/518], Loss: 1.9340, Perplexity: 6.9174
+Epoch [5/30], Step [90/518], Loss: 1.9233, Perplexity: 6.8432
+Epoch [5/30], Step [100/518], Loss: 1.9801, Perplexity: 7.2437
+Epoch [5/30], Step [110/518], Loss: 1.7832, Perplexity: 5.9489
+Epoch [5/30], Step [120/518], Loss: 1.9414, Perplexity: 6.9684
+Epoch [5/30], Step [130/518], Loss: 1.8125, Perplexity: 6.1255
+Epoch [5/30], Step [140/518], Loss: 1.9871, Perplexity: 7.2943
+Epoch [5/30], Step [150/518], Loss: 1.9127, Perplexity: 6.7712
+Epoch [5/30], Step [160/518], Loss: 1.9631, Perplexity: 7.1214
+Epoch [5/30], Step [170/518], Loss: 1.9548, Perplexity: 7.0623
+Epoch [5/30], Step [180/518], Loss: 1.9004, Perplexity: 6.6883
+Epoch [5/30], Step [190/518], Loss: 1.8603, Perplexity: 6.4256
+Epoch [5/30], Step [200/518], Loss: 1.9637, Perplexity: 7.1257
+Epoch [5/30], Step [210/518], Loss: 1.9132, Perplexity: 6.7744
+Epoch [5/30], Step [220/518], Loss: 1.9215, Perplexity: 6.8310
+Epoch [5/30], Step [230/518], Loss: 1.9496, Perplexity: 7.0260
+Epoch [5/30], Step [240/518], Loss: 1.8853, Perplexity: 6.5886
+Epoch [5/30], Step [250/518], Loss: 1.9572, Perplexity: 7.0794
+Epoch [5/30], Step [260/518], Loss: 1.9883, Perplexity: 7.3029
+Epoch [5/30], Step [270/518], Loss: 1.9764, Perplexity: 7.2169
+Epoch [5/30], Step [280/518], Loss: 1.8524, Perplexity: 6.3751
+Epoch [5/30], Step [290/518], Loss: 1.8341, Perplexity: 6.2593
+Epoch [5/30], Step [300/518], Loss: 1.9141, Perplexity: 6.7811
+Epoch [5/30], Step [310/518], Loss: 1.9326, Perplexity: 6.9077
+Epoch [5/30], Step [320/518], Loss: 1.8423, Perplexity: 6.3112
+Epoch [5/30], Step [330/518], Loss: 1.9450, Perplexity: 6.9933
+Epoch [5/30], Step [340/518], Loss: 1.8706, Perplexity: 6.4920
+Epoch [5/30], Step [350/518], Loss: 1.9578, Perplexity: 7.0834
+Epoch [5/30], Step [360/518], Loss: 1.8865, Perplexity: 6.5960
+Epoch [5/30], Step [370/518], Loss: 1.9130, Perplexity: 6.7735
+Epoch [5/30], Step [380/518], Loss: 1.9451, Perplexity: 6.9946
+Epoch [5/30], Step [390/518], Loss: 1.9359, Perplexity: 6.9304
+Epoch [5/30], Step [400/518], Loss: 1.9520, Perplexity: 7.0430
+Epoch [5/30], Step [410/518], Loss: 2.0544, Perplexity: 7.8022
+Epoch [5/30], Step [420/518], Loss: 2.0256, Perplexity: 7.5806
+Epoch [5/30], Step [430/518], Loss: 1.8946, Perplexity: 6.6496
+Epoch [5/30], Step [440/518], Loss: 2.0412, Perplexity: 7.7001
+Epoch [5/30], Step [450/518], Loss: 1.8499, Perplexity: 6.3590
+Epoch [5/30], Step [460/518], Loss: 1.9971, Perplexity: 7.3677
+Epoch [5/30], Step [470/518], Loss: 1.8669, Perplexity: 6.4683
+Epoch [5/30], Step [480/518], Loss: 1.8723, Perplexity: 6.5030
+Epoch [5/30], Step [490/518], Loss: 1.9698, Perplexity: 7.1689
+Epoch [5/30], Step [500/518], Loss: 1.9423, Perplexity: 6.9747
+Epoch [5/30], Step [510/518], Loss: 1.9385, Perplexity: 6.9481
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [6/30], Step [0/518], Loss: 1.7882, Perplexity: 5.9788
+Epoch [6/30], Step [10/518], Loss: 1.8149, Perplexity: 6.1403
+Epoch [6/30], Step [20/518], Loss: 1.7975, Perplexity: 6.0348
+Epoch [6/30], Step [30/518], Loss: 1.7101, Perplexity: 5.5295
+Epoch [6/30], Step [40/518], Loss: 1.7843, Perplexity: 5.9556
+Epoch [6/30], Step [50/518], Loss: 1.8989, Perplexity: 6.6785
+Epoch [6/30], Step [60/518], Loss: 1.7874, Perplexity: 5.9738
+Epoch [6/30], Step [70/518], Loss: 1.8011, Perplexity: 6.0564
+Epoch [6/30], Step [80/518], Loss: 1.8431, Perplexity: 6.3163
+Epoch [6/30], Step [90/518], Loss: 1.7997, Perplexity: 6.0478
+Epoch [6/30], Step [100/518], Loss: 1.8462, Perplexity: 6.3359
+Epoch [6/30], Step [110/518], Loss: 1.8009, Perplexity: 6.0553
+Epoch [6/30], Step [120/518], Loss: 1.8127, Perplexity: 6.1270
+Epoch [6/30], Step [130/518], Loss: 1.7950, Perplexity: 6.0195
+Epoch [6/30], Step [140/518], Loss: 1.7692, Perplexity: 5.8662
+Epoch [6/30], Step [150/518], Loss: 1.9372, Perplexity: 6.9390
+Epoch [6/30], Step [160/518], Loss: 1.8452, Perplexity: 6.3296
+Epoch [6/30], Step [170/518], Loss: 1.7637, Perplexity: 5.8342
+Epoch [6/30], Step [180/518], Loss: 1.7930, Perplexity: 6.0077
+Epoch [6/30], Step [190/518], Loss: 1.7881, Perplexity: 5.9782
+Epoch [6/30], Step [200/518], Loss: 1.7840, Perplexity: 5.9538
+Epoch [6/30], Step [210/518], Loss: 1.7901, Perplexity: 5.9899
+Epoch [6/30], Step [220/518], Loss: 1.9093, Perplexity: 6.7485
+Epoch [6/30], Step [230/518], Loss: 1.9167, Perplexity: 6.7988
+Epoch [6/30], Step [240/518], Loss: 1.7410, Perplexity: 5.7031
+Epoch [6/30], Step [250/518], Loss: 1.9254, Perplexity: 6.8581
+Epoch [6/30], Step [260/518], Loss: 1.8212, Perplexity: 6.1790
+Epoch [6/30], Step [270/518], Loss: 1.9042, Perplexity: 6.7138
+Epoch [6/30], Step [280/518], Loss: 1.8370, Perplexity: 6.2775
+Epoch [6/30], Step [290/518], Loss: 1.8363, Perplexity: 6.2735
+Epoch [6/30], Step [300/518], Loss: 1.7669, Perplexity: 5.8526
+Epoch [6/30], Step [310/518], Loss: 1.9464, Perplexity: 7.0032
+Epoch [6/30], Step [320/518], Loss: 1.7834, Perplexity: 5.9503
+Epoch [6/30], Step [330/518], Loss: 1.8043, Perplexity: 6.0759
+Epoch [6/30], Step [340/518], Loss: 1.9253, Perplexity: 6.8573
+Epoch [6/30], Step [350/518], Loss: 1.8353, Perplexity: 6.2671
+Epoch [6/30], Step [360/518], Loss: 1.7562, Perplexity: 5.7906
+Epoch [6/30], Step [370/518], Loss: 1.7744, Perplexity: 5.8969
+Epoch [6/30], Step [380/518], Loss: 1.8367, Perplexity: 6.2761
+Epoch [6/30], Step [390/518], Loss: 1.7942, Perplexity: 6.0146
+Epoch [6/30], Step [400/518], Loss: 1.8941, Perplexity: 6.6464
+Epoch [6/30], Step [410/518], Loss: 1.7669, Perplexity: 5.8529
+Epoch [6/30], Step [420/518], Loss: 1.8628, Perplexity: 6.4415
+Epoch [6/30], Step [430/518], Loss: 1.9254, Perplexity: 6.8580
+Epoch [6/30], Step [440/518], Loss: 1.9395, Perplexity: 6.9556
+Epoch [6/30], Step [450/518], Loss: 1.8658, Perplexity: 6.4610
+Epoch [6/30], Step [460/518], Loss: 1.8511, Perplexity: 6.3665
+Epoch [6/30], Step [470/518], Loss: 1.8507, Perplexity: 6.3642
+Epoch [6/30], Step [480/518], Loss: 1.7522, Perplexity: 5.7672
+Epoch [6/30], Step [490/518], Loss: 1.8253, Perplexity: 6.2044
+Epoch [6/30], Step [500/518], Loss: 1.7577, Perplexity: 5.7988
+Epoch [6/30], Step [510/518], Loss: 1.8833, Perplexity: 6.5751
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [7/30], Step [0/518], Loss: 1.5865, Perplexity: 4.8864
+Epoch [7/30], Step [10/518], Loss: 1.7018, Perplexity: 5.4837
+Epoch [7/30], Step [20/518], Loss: 1.7350, Perplexity: 5.6691
+Epoch [7/30], Step [30/518], Loss: 1.5913, Perplexity: 4.9102
+Epoch [7/30], Step [40/518], Loss: 1.6219, Perplexity: 5.0628
+Epoch [7/30], Step [50/518], Loss: 1.6816, Perplexity: 5.3739
+Epoch [7/30], Step [60/518], Loss: 1.7154, Perplexity: 5.5591
+Epoch [7/30], Step [70/518], Loss: 1.7044, Perplexity: 5.4978
+Epoch [7/30], Step [80/518], Loss: 1.6940, Perplexity: 5.4412
+Epoch [7/30], Step [90/518], Loss: 1.5706, Perplexity: 4.8095
+Epoch [7/30], Step [100/518], Loss: 1.7118, Perplexity: 5.5388
+Epoch [7/30], Step [110/518], Loss: 1.6388, Perplexity: 5.1488
+Epoch [7/30], Step [120/518], Loss: 1.6905, Perplexity: 5.4223
+Epoch [7/30], Step [130/518], Loss: 1.6571, Perplexity: 5.2440
+Epoch [7/30], Step [140/518], Loss: 1.7492, Perplexity: 5.7501
+Epoch [7/30], Step [150/518], Loss: 1.7694, Perplexity: 5.8671
+Epoch [7/30], Step [160/518], Loss: 1.6620, Perplexity: 5.2696
+Epoch [7/30], Step [170/518], Loss: 1.7191, Perplexity: 5.5796
+Epoch [7/30], Step [180/518], Loss: 1.7369, Perplexity: 5.6795
+Epoch [7/30], Step [190/518], Loss: 1.7212, Perplexity: 5.5910
+Epoch [7/30], Step [200/518], Loss: 1.7319, Perplexity: 5.6512
+Epoch [7/30], Step [210/518], Loss: 1.7439, Perplexity: 5.7199
+Epoch [7/30], Step [220/518], Loss: 1.7788, Perplexity: 5.9227
+Epoch [7/30], Step [230/518], Loss: 1.6860, Perplexity: 5.3977
+Epoch [7/30], Step [240/518], Loss: 1.6847, Perplexity: 5.3908
+Epoch [7/30], Step [250/518], Loss: 1.7220, Perplexity: 5.5958
+Epoch [7/30], Step [260/518], Loss: 1.7231, Perplexity: 5.6019
+Epoch [7/30], Step [270/518], Loss: 1.6914, Perplexity: 5.4272
+Epoch [7/30], Step [280/518], Loss: 1.8407, Perplexity: 6.3011
+Epoch [7/30], Step [290/518], Loss: 1.7172, Perplexity: 5.5689
+Epoch [7/30], Step [300/518], Loss: 1.7333, Perplexity: 5.6595
+Epoch [7/30], Step [310/518], Loss: 1.7009, Perplexity: 5.4788
+Epoch [7/30], Step [320/518], Loss: 1.7486, Perplexity: 5.7468
+Epoch [7/30], Step [330/518], Loss: 1.7002, Perplexity: 5.4751
+Epoch [7/30], Step [340/518], Loss: 1.6918, Perplexity: 5.4291
+Epoch [7/30], Step [350/518], Loss: 1.7196, Perplexity: 5.5824
+Epoch [7/30], Step [360/518], Loss: 1.7789, Perplexity: 5.9236
+Epoch [7/30], Step [370/518], Loss: 1.7295, Perplexity: 5.6378
+Epoch [7/30], Step [380/518], Loss: 1.7636, Perplexity: 5.8334
+Epoch [7/30], Step [390/518], Loss: 1.7484, Perplexity: 5.7455
+Epoch [7/30], Step [400/518], Loss: 1.8399, Perplexity: 6.2956
+Epoch [7/30], Step [410/518], Loss: 1.7482, Perplexity: 5.7443
+Epoch [7/30], Step [420/518], Loss: 1.7437, Perplexity: 5.7185
+Epoch [7/30], Step [430/518], Loss: 1.7668, Perplexity: 5.8523
+Epoch [7/30], Step [440/518], Loss: 1.7367, Perplexity: 5.6788
+Epoch [7/30], Step [450/518], Loss: 1.7287, Perplexity: 5.6333
+Epoch [7/30], Step [460/518], Loss: 1.7007, Perplexity: 5.4776
+Epoch [7/30], Step [470/518], Loss: 1.6833, Perplexity: 5.3834
+Epoch [7/30], Step [480/518], Loss: 1.6704, Perplexity: 5.3140
+Epoch [7/30], Step [490/518], Loss: 1.7588, Perplexity: 5.8054
+Epoch [7/30], Step [500/518], Loss: 1.7712, Perplexity: 5.8780
+Epoch [7/30], Step [510/518], Loss: 1.8382, Perplexity: 6.2849
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [8/30], Step [0/518], Loss: 1.6160, Perplexity: 5.0332
+Epoch [8/30], Step [10/518], Loss: 1.4908, Perplexity: 4.4404
+Epoch [8/30], Step [20/518], Loss: 1.5062, Perplexity: 4.5095
+Epoch [8/30], Step [30/518], Loss: 1.5929, Perplexity: 4.9181
+Epoch [8/30], Step [40/518], Loss: 1.5693, Perplexity: 4.8031
+Epoch [8/30], Step [50/518], Loss: 1.6708, Perplexity: 5.3164
+Epoch [8/30], Step [60/518], Loss: 1.5666, Perplexity: 4.7901
+Epoch [8/30], Step [70/518], Loss: 1.6440, Perplexity: 5.1758
+Epoch [8/30], Step [80/518], Loss: 1.5755, Perplexity: 4.8330
+Epoch [8/30], Step [90/518], Loss: 1.5102, Perplexity: 4.5278
+Epoch [8/30], Step [100/518], Loss: 1.5823, Perplexity: 4.8660
+Epoch [8/30], Step [110/518], Loss: 1.6370, Perplexity: 5.1395
+Epoch [8/30], Step [120/518], Loss: 1.5605, Perplexity: 4.7610
+Epoch [8/30], Step [130/518], Loss: 1.5755, Perplexity: 4.8332
+Epoch [8/30], Step [140/518], Loss: 1.7157, Perplexity: 5.5603
+Epoch [8/30], Step [150/518], Loss: 1.5388, Perplexity: 4.6588
+Epoch [8/30], Step [160/518], Loss: 1.5958, Perplexity: 4.9322
+Epoch [8/30], Step [170/518], Loss: 1.6086, Perplexity: 4.9956
+Epoch [8/30], Step [180/518], Loss: 1.6868, Perplexity: 5.4019
+Epoch [8/30], Step [190/518], Loss: 1.6114, Perplexity: 5.0096
+Epoch [8/30], Step [200/518], Loss: 1.6823, Perplexity: 5.3779
+Epoch [8/30], Step [210/518], Loss: 1.5879, Perplexity: 4.8933
+Epoch [8/30], Step [220/518], Loss: 1.7399, Perplexity: 5.6966
+Epoch [8/30], Step [230/518], Loss: 1.6832, Perplexity: 5.3829
+Epoch [8/30], Step [240/518], Loss: 1.6121, Perplexity: 5.0134
+Epoch [8/30], Step [250/518], Loss: 1.6464, Perplexity: 5.1883
+Epoch [8/30], Step [260/518], Loss: 1.7348, Perplexity: 5.6681
+Epoch [8/30], Step [270/518], Loss: 1.6134, Perplexity: 5.0197
+Epoch [8/30], Step [280/518], Loss: 1.6539, Perplexity: 5.2273
+Epoch [8/30], Step [290/518], Loss: 1.5999, Perplexity: 4.9526
+Epoch [8/30], Step [300/518], Loss: 1.6199, Perplexity: 5.0527
+Epoch [8/30], Step [310/518], Loss: 1.6436, Perplexity: 5.1738
+Epoch [8/30], Step [320/518], Loss: 1.6357, Perplexity: 5.1329
+Epoch [8/30], Step [330/518], Loss: 1.7007, Perplexity: 5.4778
+Epoch [8/30], Step [340/518], Loss: 1.5808, Perplexity: 4.8590
+Epoch [8/30], Step [350/518], Loss: 1.6293, Perplexity: 5.1001
+Epoch [8/30], Step [360/518], Loss: 1.5904, Perplexity: 4.9059
+Epoch [8/30], Step [370/518], Loss: 1.6979, Perplexity: 5.4625
+Epoch [8/30], Step [380/518], Loss: 1.6521, Perplexity: 5.2181
+Epoch [8/30], Step [390/518], Loss: 1.6310, Perplexity: 5.1088
+Epoch [8/30], Step [400/518], Loss: 1.6205, Perplexity: 5.0556
+Epoch [8/30], Step [410/518], Loss: 1.6358, Perplexity: 5.1335
+Epoch [8/30], Step [420/518], Loss: 1.6214, Perplexity: 5.0604
+Epoch [8/30], Step [430/518], Loss: 1.6033, Perplexity: 4.9694
+Epoch [8/30], Step [440/518], Loss: 1.7053, Perplexity: 5.5032
+Epoch [8/30], Step [450/518], Loss: 1.6288, Perplexity: 5.0975
+Epoch [8/30], Step [460/518], Loss: 1.7002, Perplexity: 5.4749
+Epoch [8/30], Step [470/518], Loss: 1.6199, Perplexity: 5.0528
+Epoch [8/30], Step [480/518], Loss: 1.7254, Perplexity: 5.6147
+Epoch [8/30], Step [490/518], Loss: 1.6882, Perplexity: 5.4100
+Epoch [8/30], Step [500/518], Loss: 1.6634, Perplexity: 5.2771
+Epoch [8/30], Step [510/518], Loss: 1.6807, Perplexity: 5.3691
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [9/30], Step [0/518], Loss: 1.5288, Perplexity: 4.6127
+Epoch [9/30], Step [10/518], Loss: 1.4685, Perplexity: 4.3428
+Epoch [9/30], Step [20/518], Loss: 1.4530, Perplexity: 4.2761
+Epoch [9/30], Step [30/518], Loss: 1.4810, Perplexity: 4.3973
+Epoch [9/30], Step [40/518], Loss: 1.4611, Perplexity: 4.3108
+Epoch [9/30], Step [50/518], Loss: 1.5186, Perplexity: 4.5659
+Epoch [9/30], Step [60/518], Loss: 1.4408, Perplexity: 4.2242
+Epoch [9/30], Step [70/518], Loss: 1.5278, Perplexity: 4.6079
+Epoch [9/30], Step [80/518], Loss: 1.4373, Perplexity: 4.2091
+Epoch [9/30], Step [90/518], Loss: 1.4981, Perplexity: 4.4732
+Epoch [9/30], Step [100/518], Loss: 1.4893, Perplexity: 4.4342
+Epoch [9/30], Step [110/518], Loss: 1.4910, Perplexity: 4.4417
+Epoch [9/30], Step [120/518], Loss: 1.5135, Perplexity: 4.5425
+Epoch [9/30], Step [130/518], Loss: 1.5077, Perplexity: 4.5161
+Epoch [9/30], Step [140/518], Loss: 1.6137, Perplexity: 5.0212
+Epoch [9/30], Step [150/518], Loss: 1.5428, Perplexity: 4.6779
+Epoch [9/30], Step [160/518], Loss: 1.5639, Perplexity: 4.7776
+Epoch [9/30], Step [170/518], Loss: 1.5013, Perplexity: 4.4875
+Epoch [9/30], Step [180/518], Loss: 1.5170, Perplexity: 4.5586
+Epoch [9/30], Step [190/518], Loss: 1.5125, Perplexity: 4.5381
+Epoch [9/30], Step [200/518], Loss: 1.6160, Perplexity: 5.0327
+Epoch [9/30], Step [210/518], Loss: 1.5293, Perplexity: 4.6149
+Epoch [9/30], Step [220/518], Loss: 1.5001, Perplexity: 4.4821
+Epoch [9/30], Step [230/518], Loss: 1.6064, Perplexity: 4.9847
+Epoch [9/30], Step [240/518], Loss: 1.5016, Perplexity: 4.4887
+Epoch [9/30], Step [250/518], Loss: 1.5437, Perplexity: 4.6819
+Epoch [9/30], Step [260/518], Loss: 1.6115, Perplexity: 5.0102
+Epoch [9/30], Step [270/518], Loss: 1.5483, Perplexity: 4.7034
+Epoch [9/30], Step [280/518], Loss: 1.5175, Perplexity: 4.5609
+Epoch [9/30], Step [290/518], Loss: 1.5581, Perplexity: 4.7497
+Epoch [9/30], Step [300/518], Loss: 1.4876, Perplexity: 4.4264
+Epoch [9/30], Step [310/518], Loss: 1.5422, Perplexity: 4.6750
+Epoch [9/30], Step [320/518], Loss: 1.5357, Perplexity: 4.6444
+Epoch [9/30], Step [330/518], Loss: 1.6207, Perplexity: 5.0565
+Epoch [9/30], Step [340/518], Loss: 1.5854, Perplexity: 4.8812
+Epoch [9/30], Step [350/518], Loss: 1.5474, Perplexity: 4.6991
+Epoch [9/30], Step [360/518], Loss: 1.5469, Perplexity: 4.6970
+Epoch [9/30], Step [370/518], Loss: 1.5759, Perplexity: 4.8353
+Epoch [9/30], Step [380/518], Loss: 1.5935, Perplexity: 4.9208
+Epoch [9/30], Step [390/518], Loss: 1.5318, Perplexity: 4.6263
+Epoch [9/30], Step [400/518], Loss: 1.5551, Perplexity: 4.7354
+Epoch [9/30], Step [410/518], Loss: 1.5827, Perplexity: 4.8680
+Epoch [9/30], Step [420/518], Loss: 1.6617, Perplexity: 5.2683
+Epoch [9/30], Step [430/518], Loss: 1.6709, Perplexity: 5.3169
+Epoch [9/30], Step [440/518], Loss: 1.5761, Perplexity: 4.8362
+Epoch [9/30], Step [450/518], Loss: 1.5674, Perplexity: 4.7941
+Epoch [9/30], Step [460/518], Loss: 1.4941, Perplexity: 4.4553
+Epoch [9/30], Step [470/518], Loss: 1.6343, Perplexity: 5.1257
+Epoch [9/30], Step [480/518], Loss: 1.6037, Perplexity: 4.9716
+Epoch [9/30], Step [490/518], Loss: 1.5799, Perplexity: 4.8547
+Epoch [9/30], Step [500/518], Loss: 1.6615, Perplexity: 5.2673
+Epoch [9/30], Step [510/518], Loss: 1.5547, Perplexity: 4.7335
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [10/30], Step [0/518], Loss: 1.3879, Perplexity: 4.0064
+Epoch [10/30], Step [10/518], Loss: 1.4345, Perplexity: 4.1975
+Epoch [10/30], Step [20/518], Loss: 1.4255, Perplexity: 4.1601
+Epoch [10/30], Step [30/518], Loss: 1.3451, Perplexity: 3.8387
+Epoch [10/30], Step [40/518], Loss: 1.3628, Perplexity: 3.9070
+Epoch [10/30], Step [50/518], Loss: 1.3877, Perplexity: 4.0056
+Epoch [10/30], Step [60/518], Loss: 1.3802, Perplexity: 3.9757
+Epoch [10/30], Step [70/518], Loss: 1.3822, Perplexity: 3.9837
+Epoch [10/30], Step [80/518], Loss: 1.4636, Perplexity: 4.3213
+Epoch [10/30], Step [90/518], Loss: 1.4785, Perplexity: 4.3862
+Epoch [10/30], Step [100/518], Loss: 1.4629, Perplexity: 4.3184
+Epoch [10/30], Step [110/518], Loss: 1.4435, Perplexity: 4.2356
+Epoch [10/30], Step [120/518], Loss: 1.4175, Perplexity: 4.1269
+Epoch [10/30], Step [130/518], Loss: 1.4215, Perplexity: 4.1435
+Epoch [10/30], Step [140/518], Loss: 1.4408, Perplexity: 4.2242
+Epoch [10/30], Step [150/518], Loss: 1.4701, Perplexity: 4.3496
+Epoch [10/30], Step [160/518], Loss: 1.4512, Perplexity: 4.2682
+Epoch [10/30], Step [170/518], Loss: 1.4221, Perplexity: 4.1459
+Epoch [10/30], Step [180/518], Loss: 1.4814, Perplexity: 4.3989
+Epoch [10/30], Step [190/518], Loss: 1.4296, Perplexity: 4.1771
+Epoch [10/30], Step [200/518], Loss: 1.4277, Perplexity: 4.1690
+Epoch [10/30], Step [210/518], Loss: 1.4648, Perplexity: 4.3267
+Epoch [10/30], Step [220/518], Loss: 1.4561, Perplexity: 4.2890
+Epoch [10/30], Step [230/518], Loss: 1.4136, Perplexity: 4.1108
+Epoch [10/30], Step [240/518], Loss: 1.4492, Perplexity: 4.2598
+Epoch [10/30], Step [250/518], Loss: 1.5227, Perplexity: 4.5844
+Epoch [10/30], Step [260/518], Loss: 1.4999, Perplexity: 4.4813
+Epoch [10/30], Step [270/518], Loss: 1.3832, Perplexity: 3.9877
+Epoch [10/30], Step [280/518], Loss: 1.4773, Perplexity: 4.3811
+Epoch [10/30], Step [290/518], Loss: 1.5697, Perplexity: 4.8050
+Epoch [10/30], Step [300/518], Loss: 1.5108, Perplexity: 4.5305
+Epoch [10/30], Step [310/518], Loss: 1.5087, Perplexity: 4.5208
+Epoch [10/30], Step [320/518], Loss: 1.4620, Perplexity: 4.3148
+Epoch [10/30], Step [330/518], Loss: 1.5151, Perplexity: 4.5497
+Epoch [10/30], Step [340/518], Loss: 1.5179, Perplexity: 4.5628
+Epoch [10/30], Step [350/518], Loss: 1.4882, Perplexity: 4.4289
+Epoch [10/30], Step [360/518], Loss: 1.5373, Perplexity: 4.6519
+Epoch [10/30], Step [370/518], Loss: 1.4933, Perplexity: 4.4518
+Epoch [10/30], Step [380/518], Loss: 1.3743, Perplexity: 3.9522
+Epoch [10/30], Step [390/518], Loss: 1.4625, Perplexity: 4.3166
+Epoch [10/30], Step [400/518], Loss: 1.5064, Perplexity: 4.5104
+Epoch [10/30], Step [410/518], Loss: 1.5500, Perplexity: 4.7116
+Epoch [10/30], Step [420/518], Loss: 1.5341, Perplexity: 4.6369
+Epoch [10/30], Step [430/518], Loss: 1.4802, Perplexity: 4.3937
+Epoch [10/30], Step [440/518], Loss: 1.5095, Perplexity: 4.5246
+Epoch [10/30], Step [450/518], Loss: 1.6015, Perplexity: 4.9604
+Epoch [10/30], Step [460/518], Loss: 1.5548, Perplexity: 4.7341
+Epoch [10/30], Step [470/518], Loss: 1.5049, Perplexity: 4.5037
+Epoch [10/30], Step [480/518], Loss: 1.5060, Perplexity: 4.5085
+Epoch [10/30], Step [490/518], Loss: 1.5790, Perplexity: 4.8499
+Epoch [10/30], Step [500/518], Loss: 1.4654, Perplexity: 4.3293
+Epoch [10/30], Step [510/518], Loss: 1.4384, Perplexity: 4.2139
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Epoch [11/30], Step [0/518], Loss: 1.3625, Perplexity: 3.9058
+Epoch [11/30], Step [10/518], Loss: 1.3368, Perplexity: 3.8069
+Epoch [11/30], Step [20/518], Loss: 1.3322, Perplexity: 3.7895
+Epoch [11/30], Step [30/518], Loss: 1.3221, Perplexity: 3.7512
+Epoch [11/30], Step [40/518], Loss: 1.3128, Perplexity: 3.7166
+Epoch [11/30], Step [50/518], Loss: 1.3608, Perplexity: 3.8991
+Epoch [11/30], Step [60/518], Loss: 1.3383, Perplexity: 3.8127
+Epoch [11/30], Step [70/518], Loss: 1.3364, Perplexity: 3.8052
+Epoch [11/30], Step [80/518], Loss: 1.3200, Perplexity: 3.7433
+Epoch [11/30], Step [90/518], Loss: 1.3542, Perplexity: 3.8735
+Epoch [11/30], Step [100/518], Loss: 1.3405, Perplexity: 3.8209
+Epoch [11/30], Step [110/518], Loss: 1.3218, Perplexity: 3.7502
+Epoch [11/30], Step [120/518], Loss: 1.3624, Perplexity: 3.9054
+Epoch [11/30], Step [130/518], Loss: 1.3520, Perplexity: 3.8652
+Epoch [11/30], Step [140/518], Loss: 1.4289, Perplexity: 4.1741
+Epoch [11/30], Step [150/518], Loss: 1.3777, Perplexity: 3.9657
+Epoch [11/30], Step [160/518], Loss: 1.3591, Perplexity: 3.8928
+Epoch [11/30], Step [170/518], Loss: 1.3906, Perplexity: 4.0172
+Epoch [11/30], Step [180/518], Loss: 1.3601, Perplexity: 3.8966
+Epoch [11/30], Step [190/518], Loss: 1.3482, Perplexity: 3.8503
+Epoch [11/30], Step [200/518], Loss: 1.3736, Perplexity: 3.9495
+Epoch [11/30], Step [210/518], Loss: 1.3774, Perplexity: 3.9644
+Epoch [11/30], Step [220/518], Loss: 1.3962, Perplexity: 4.0399
+Epoch [11/30], Step [230/518], Loss: 1.3494, Perplexity: 3.8550
+Epoch [11/30], Step [240/518], Loss: 1.4677, Perplexity: 4.3394
+Epoch [11/30], Step [250/518], Loss: 1.4276, Perplexity: 4.1685
+Epoch [11/30], Step [260/518], Loss: 1.4106, Perplexity: 4.0984
+Epoch [11/30], Step [270/518], Loss: 1.4152, Perplexity: 4.1172
+Epoch [11/30], Step [280/518], Loss: 1.3973, Perplexity: 4.0444
+Epoch [11/30], Step [290/518], Loss: 1.4181, Perplexity: 4.1292
+Epoch [11/30], Step [300/518], Loss: 1.3966, Perplexity: 4.0413
+Epoch [11/30], Step [310/518], Loss: 1.4496, Perplexity: 4.2614
+Epoch [11/30], Step [320/518], Loss: 1.4211, Perplexity: 4.1415
+Epoch [11/30], Step [330/518], Loss: 1.3642, Perplexity: 3.9127
+Epoch [11/30], Step [340/518], Loss: 1.4695, Perplexity: 4.3473
+Epoch [11/30], Step [350/518], Loss: 1.4811, Perplexity: 4.3978
+Epoch [11/30], Step [360/518], Loss: 1.4298, Perplexity: 4.1780
+Epoch [11/30], Step [370/518], Loss: 1.4794, Perplexity: 4.3905
+Epoch [11/30], Step [380/518], Loss: 1.3890, Perplexity: 4.0108
+Epoch [11/30], Step [390/518], Loss: 1.3740, Perplexity: 3.9512
+Epoch [11/30], Step [400/518], Loss: 1.4565, Perplexity: 4.2907
+Epoch [11/30], Step [410/518], Loss: 1.4542, Perplexity: 4.2812
+Epoch [11/30], Step [420/518], Loss: 1.4817, Perplexity: 4.4005
+Epoch [11/30], Step [430/518], Loss: 1.4620, Perplexity: 4.3148
+Epoch [11/30], Step [440/518], Loss: 1.4180, Perplexity: 4.1290
+Epoch [11/30], Step [450/518], Loss: 1.4826, Perplexity: 4.4044
+Epoch [11/30], Step [460/518], Loss: 1.3992, Perplexity: 4.0522
+Epoch [11/30], Step [470/518], Loss: 1.3567, Perplexity: 3.8834
+Epoch [11/30], Step [480/518], Loss: 1.4744, Perplexity: 4.3684
+Epoch [11/30], Step [490/518], Loss: 1.4232, Perplexity: 4.1502
+Epoch [11/30], Step [500/518], Loss: 1.3831, Perplexity: 3.9871
+Epoch [11/30], Step [510/518], Loss: 1.4020, Perplexity: 4.0635
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+Early Stopping..
+
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python infer.py --image='data/images/test/COCO_val2014_000000000208.jpg'
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning\infer.py", line 81, in <module>
+    main(args)
+  File "C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning\infer.py", line 43, in main
+    encoder.load_state_dict(torch.load(args.encoder_path))
+  File "C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torch\serialization.py", line 1565, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torch\serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torch\serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'models/encoder-best.ckpt'
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python infer.py --image='data/images/test/COCO_val2014_000000000208.jpg'
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning\infer.py", line 81, in <module>
+    main(args)
+  File "C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning\infer.py", line 43, in main
+    encoder.load_state_dict(torch.load(args.encoder_path))
+  File "C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torch\nn\modules\module.py", line 2643, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for EncoderCNN:
+        size mismatch for linear.weight: copying a param with shape torch.Size([300, 2048]) from checkpoint, the shape in current model is torch.Size([256, 2048]).
+        size mismatch for linear.bias: copying a param with shape torch.Size([300]) from checkpoint, the shape in current model is torch.Size([256]).
+        size mismatch for bn.weight: copying a param with shape torch.Size([300]) from checkpoint, the shape in current model is torch.Size([256]).
+        size mismatch for bn.bias: copying a param with shape torch.Size([300]) from checkpoint, the shape in current model is torch.Size([256]).
+        size mismatch for bn.running_mean: copying a param with shape torch.Size([300]) from checkpoint, the shape in current model is torch.Size([256]).
+        size mismatch for bn.running_var: copying a param with shape torch.Size([300]) from checkpoint, the shape in current model is torch.Size([256]).
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python infer.py --image='data/images/test/COCO_val2014_000000000208.jpg'
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning\infer.py", line 81, in <module>
+    main(args)
+  File "C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning\infer.py", line 47, in main
+    image = load_image(args.image, transform)
+  File "C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning\infer.py", line 17, in load_image
+    image = Image.open(image_path).convert('RGB')
+  File "C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\PIL\Image.py", line 3639, in open
+    fp = builtins.open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: "'data/images/test/COCO_val2014_000000000208.jpg'"
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python infer.py --image=data/images/test/COCO_val2014_000000000208.jpg  
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning\infer.py", line 81, in <module>
+    main(args)
+  File "C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning\infer.py", line 52, in main
+    sampled_ids = decoder.sample(feature)
+TypeError: DecoderRNN.sample() missing 1 required positional argument: 'pretrained'
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python infer.py --image=data/images/test/COCO_val2014_000000000208.jpg
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+<start> a white toilet sitting in a bathroom next to a toilet . <end>
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python infer.py --image=data/images/test/COCO_val2014_000000571279.jpg
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+<start> a bowl of fruit is sitting on a table . <end>
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python infer.py --image=data/images/test/COCO_val2014_000000579635.jpg
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+<start> a man on a surfboard riding a wave . <end>
+
+(image_captioning) C:\Users\malik\Documents\1 Uni\SEM 9\CV\Project\workspace\image_captioning>python infer.py --image=data/images/test/COCO_val2014_000000581394.jpg
+[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt_tab to
+[nltk_data]     C:\Users\malik\AppData\Roaming\nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+<start> a group of people standing around a bus stop . <end>
