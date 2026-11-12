@@ -1171,3 +1171,22 @@ C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\mo
 C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
   warnings.warn(msg)
 <start> a group of people standing around a bus stop . <end>
+
+C:\Users\malik\miniconda3\envs\image_captioning\lib\site-packages\torchvision\models\_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet50_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet50_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Evaluating Caption: 15010/15011Test Loss : 2.44
+Writing captions to json file...
+███████████████████████| 3000/3000 [09:20<00:00,  5.35it/s]
+loading annotations into memory...
+Done (t=2.24s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=0.15s)
+creating index...
+index created!
+100%|████████████████████████████| 3000/3000 [00:42<00:00, 70.30it/s]
+BLEU 1: 83.67 BLEU 4: 35.6
+Test Loss : 2.44
+BLEU1 score : 83.67
+BLEU4 score : 35.60
