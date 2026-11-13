@@ -6,3 +6,4 @@
 TestImageIds.csv
 TrainImageIds.csv
 ValImageIds.csv
+.venv
